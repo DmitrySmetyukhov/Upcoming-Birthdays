@@ -33,4 +33,10 @@ describe('UtilityService', () => {
     const age = service.calculateAge(moment().subtract(1, 'years').toISOString());
     expect(age).toBe(1, 'Wrong age calculation');
   });
+
+  it('should calculate days until next birthday', () => {
+    const birthDate = moment().subtract(45, 'years').add(3, 'days').toISOString();
+    const result = service.daysUntil(birthDate);
+    expect(result).toBe(3, 'Wrong remaining days calculation');
+  });
 });
