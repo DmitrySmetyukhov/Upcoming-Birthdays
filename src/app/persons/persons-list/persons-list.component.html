@@ -2,7 +2,7 @@
 
   <mat-form-field>
     <mat-label>Filter</mat-label>
-    <input matInput placeholder="Filter">
+    <input matInput placeholder="Filter" (keyup)="applyFilter($event)">
   </mat-form-field>
 
   <div class="mat-elevation-z8">
