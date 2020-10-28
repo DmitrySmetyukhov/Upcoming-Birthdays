@@ -23,4 +23,24 @@ describe('PersonsListComponent', () => {
   it('Should create component', () => {
     expect(component).toBeTruthy();
   });
+
+  it('Should sanitize query params', () => {
+    let queryParams = {
+      active: 'firstName',
+      direction: 'asc'
+    };
+    let result = component.sanitizeQueryParams(queryParams);
+    expect(result).toEqual({
+      id: 'firstName',
+      start: 'asc'
+    }, 'Wrong truthy params sanitizing');
+
+    queryParams = {
+      active: 'test',
+      direction: 'asc'
+    };
+
+    result = component.sanitizeQueryParams(queryParams);
+    expect(result).toEqual(null, 'Wrong error params sanitizing');
+  });
 });
