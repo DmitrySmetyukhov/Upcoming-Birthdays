@@ -7,6 +7,7 @@ import {Subscription} from 'rxjs';
 import {PersonDataService} from '../../shared/services/person-data.service';
 import {EditPersonDialogComponent} from '../../shared/edit-person-dialog/edit-person-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import {UtilityService} from '../../shared/services/utility.service';
 
 @Component({
   selector: 'app-persons-list',
@@ -22,7 +23,8 @@ export class PersonsListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     private personService: PersonDataService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private utility: UtilityService
   ) {
   }
 
@@ -35,6 +37,10 @@ export class PersonsListComponent implements OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    this.sort.sortChange.subscribe(sort => {
+      this.utility.updateQueryParams(sort);
+    });
   }
 
   ngOnDestroy(): void {

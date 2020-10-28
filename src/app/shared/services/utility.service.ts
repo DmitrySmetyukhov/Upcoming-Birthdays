@@ -1,13 +1,17 @@
 import {Injectable} from '@angular/core';
 import {Person} from '../interfaces';
 import * as moment from 'moment';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilityService {
 
-  constructor() {
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private router: Router
+  ) {
   }
 
   public daysUntil(date: string) {
@@ -24,5 +28,16 @@ export class UtilityService {
     return list.sort((a, b) => {
       return this.daysUntil(a.dateOfBirth) - this.daysUntil(b.dateOfBirth);
     });
+  }
+
+  public updateQueryParams(params) {
+    const settings = {
+      queryParams: {
+        ...params,
+      },
+      relativeTo: this.activeRoute
+    };
+
+    this.router.navigate([], settings);
   }
 }
