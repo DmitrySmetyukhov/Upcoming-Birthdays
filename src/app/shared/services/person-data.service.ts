@@ -3,6 +3,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Person} from '../interfaces';
 import {map, tap} from 'rxjs/operators';
+import {UtilityService} from './utility.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class PersonDataService {
   );
 
   constructor(
-    private firestore: AngularFirestore
+    private firestore: AngularFirestore,
+    private utility: UtilityService
   ) {
     firestore.collection('persons').snapshotChanges()
       .pipe(
@@ -32,10 +34,8 @@ export class PersonDataService {
             };
           });
 
-          console.log(transformedData, 'transformed data test');
-
           this.personsState$.next(
-            transformedData
+            this.utility.sortByUpComingDates(transformedData)
           );
         })
       )

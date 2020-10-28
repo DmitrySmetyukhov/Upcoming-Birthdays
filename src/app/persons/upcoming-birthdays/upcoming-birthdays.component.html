@@ -1,1 +1,4 @@
-<p>upcoming-birthdays works!</p>
+<div *ngFor="let person of upComings$ | async">
+  <span>First name: {{person.firstName}}</span>
+  <span>Date: {{person.dateOfBirth}}</span>
+</div>
