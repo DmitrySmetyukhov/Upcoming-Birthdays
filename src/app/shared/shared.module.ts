@@ -13,6 +13,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import {MatInputModule} from '@angular/material/input';
     MatInputModule,
     MatDatepickerModule,
     MatProgressSpinnerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   exports: [
     MatSidenavModule,
@@ -44,7 +48,9 @@ import {MatInputModule} from '@angular/material/input';
     MatInputModule,
     MatDatepickerModule,
     MatProgressSpinnerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   entryComponents: [EditPersonDialogComponent]
 })
