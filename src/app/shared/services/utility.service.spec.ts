@@ -2,6 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import {UtilityService} from './utility.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import * as moment from 'moment';
+import {mockPersonsList} from '../mockData';
 
 const fakeActivatedRoute = {
   snapshot: {
@@ -38,5 +39,11 @@ describe('UtilityService', () => {
     const birthDate = moment().subtract(45, 'years').add(3, 'days').toISOString();
     const result = service.daysUntil(birthDate);
     expect(result).toBe(3, 'Wrong remaining days calculation');
+  });
+
+  it('should sort persons by dates of birth', () => {
+    const result = [...service.sortByUpComingDates([...mockPersonsList])];
+    expect(result[0].id).toBe('2', 'Wrong sorting by upcoming dates');
+    expect(result[1].id).toBe('1', 'Wrong sorting by upcoming dates');
   });
 });
