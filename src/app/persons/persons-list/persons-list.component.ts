@@ -8,6 +8,8 @@ import {PersonDataService} from '../../shared/services/person-data.service';
 import {EditPersonDialogComponent} from '../../shared/edit-person-dialog/edit-person-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {UtilityService} from '../../shared/services/utility.service';
+import {first} from 'rxjs/operators';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-persons-list',
@@ -24,7 +26,8 @@ export class PersonsListComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     private personService: PersonDataService,
     public dialog: MatDialog,
-    private utility: UtilityService
+    private utility: UtilityService,
+    private activeRoute: ActivatedRoute
   ) {
   }
 
@@ -40,6 +43,10 @@ export class PersonsListComponent implements OnInit, OnDestroy, AfterViewInit {
 
     this.sort.sortChange.subscribe(sort => {
       this.utility.updateQueryParams(sort);
+    });
+
+    setTimeout(() => {
+      this.subscribeToQueryParams();
     });
   }
 
@@ -66,6 +73,29 @@ export class PersonsListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   delete(id: string) {
     this.personService.deletePerson(id);
+  }
+
+  sanitizeQueryParams(params: any) {
+    if (this.displayedColumns.includes(params.active) && ['asc', 'desc'].includes(params.direction)) {
+      return {
+        id: params.active,
+        start: params.direction
+      };
+    }
+
+    return null;
+  }
+
+  private subscribeToQueryParams() {
+    this.activeRoute.queryParams.pipe(first()).subscribe(queryParams => {
+      const data = this.sanitizeQueryParams(queryParams);
+      if (data) {
+        this.sort.sort({
+          ...data,
+          disableClear: false
+        });
+      }
+    });
   }
 
 }
