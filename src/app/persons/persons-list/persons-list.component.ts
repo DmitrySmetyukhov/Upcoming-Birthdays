@@ -14,7 +14,7 @@ import {PersonDataService} from '../../shared/services/person-data.service';
 export class PersonsListComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  displayedColumns: string[] = ['firstName', 'lastName', 'dateOfBirth'];
+  displayedColumns: string[] = ['firstName', 'lastName', 'dateOfBirth', 'age', 'controls'];
   dataSource: MatTableDataSource<Person> = new MatTableDataSource();
   private subscriptions: Subscription[] = [];
 

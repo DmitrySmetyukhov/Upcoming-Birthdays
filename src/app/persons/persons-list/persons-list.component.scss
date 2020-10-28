@@ -11,11 +11,19 @@
     th {
       user-select: none;
     }
+
+    td:last-child{
+      min-width: 160px;
+    }
   }
 
   .mat-form-field {
     font-size: 14px;
     width: 100%;
+  }
+
+  .control {
+    margin-right: 10px;
   }
 
 }
