@@ -46,6 +46,10 @@ export class PersonDataService {
     return this.firestore.collection('persons').add(person);
   }
 
+  public updatePerson(id: string, update: Person) {
+    return this.firestore.collection('persons').doc(id).set(update);
+  }
+
   public deletePerson(id: string) {
     return this.firestore.collection('persons').doc(id).delete();
   }

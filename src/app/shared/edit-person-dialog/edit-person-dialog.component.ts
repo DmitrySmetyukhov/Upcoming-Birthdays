@@ -35,7 +35,13 @@ export class EditPersonDialogComponent implements OnInit {
   async save() {
     this.pending = true;
     try {
-      await this.personService.addPerson(this.form.value);
+
+      if (!this.editAction) {
+        await this.personService.addPerson(this.form.value);
+      } else {
+        await this.personService.updatePerson(this.data.person.id, this.form.value);
+      }
+
       this.dialog.closeAll();
     } catch (err) {
       this.showError();
