@@ -1,6 +1,12 @@
-<div *ngFor="let person of upComings$ | async">
-  <span>First name: {{person.firstName}}</span>
-  <span>Date: {{person.dateOfBirth}}</span>
-  <span>Upcoming Age: {{person.dateOfBirth | age}}</span>
-  <span>Remaining days: {{person.dateOfBirth | remainingDays}}</span>
+<div class="upcoming-dates">
+  <mat-card *ngFor="let person of upComings$ | async">
+    <mat-card-title>
+      {{person.firstName}}
+      {{person.lastName}}
+    </mat-card-title>
+    <mat-card-content>
+      <div>Remaining days: <strong>{{person.dateOfBirth | remainingDays}}</strong></div>
+      <div>Upcoming Age: <strong>{{person.dateOfBirth | age}}</strong></div>
+    </mat-card-content>
+  </mat-card>
 </div>
