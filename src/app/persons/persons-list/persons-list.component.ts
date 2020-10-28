@@ -5,6 +5,8 @@ import {MatTableDataSource} from '@angular/material/table';
 import {Person} from '../../shared/interfaces';
 import {Subscription} from 'rxjs';
 import {PersonDataService} from '../../shared/services/person-data.service';
+import {EditPersonDialogComponent} from '../../shared/edit-person-dialog/edit-person-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-persons-list',
@@ -18,7 +20,10 @@ export class PersonsListComponent implements OnInit, OnDestroy, AfterViewInit {
   dataSource: MatTableDataSource<Person> = new MatTableDataSource();
   private subscriptions: Subscription[] = [];
 
-  constructor(private personService: PersonDataService) {
+  constructor(
+    private personService: PersonDataService,
+    public dialog: MatDialog
+  ) {
   }
 
   ngOnInit(): void {
@@ -43,6 +48,14 @@ export class PersonsListComponent implements OnInit, OnDestroy, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  edit(person: Person) {
+    this.dialog.open(EditPersonDialogComponent, {
+      data: {
+        person
+      }
+    });
   }
 
   delete(id: string) {

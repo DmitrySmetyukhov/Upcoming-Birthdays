@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {PersonDataService} from '../services/person-data.service';
-import {MatDialog} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
@@ -12,17 +12,24 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class EditPersonDialogComponent implements OnInit {
   public form: FormGroup;
   public pending = false;
+  public editAction = false;
 
   constructor(
     private fb: FormBuilder,
     private personService: PersonDataService,
     public dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
   }
 
   ngOnInit(): void {
     this.buildForm();
+
+    if (this.data) {
+      this.editAction = true;
+      this.form.patchValue(this.data.person);
+    }
   }
 
   async save() {
