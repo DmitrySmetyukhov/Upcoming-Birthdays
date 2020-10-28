@@ -2,6 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {PersonsListComponent} from './persons-list.component';
 import {AppModule} from '../../app.module';
 import {DebugElement} from '@angular/core';
+import {By} from '@angular/platform-browser';
 
 describe('PersonsListComponent', () => {
   let component: PersonsListComponent;
@@ -42,5 +43,10 @@ describe('PersonsListComponent', () => {
 
     result = component.sanitizeQueryParams(queryParams);
     expect(result).toEqual(null, 'Wrong error params sanitizing');
+  });
+
+  it('Should display table', () => {
+    const table = el.queryAll(By.css('.mat-table'));
+    expect(table).toBeTruthy();
   });
 });
