@@ -16,10 +16,11 @@ import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AgePipe } from './pipes/age.pipe';
+import { RemainingDaysPipe } from './pipes/remaining-days.pipe';
 
 
 @NgModule({
-  declarations: [EditPersonDialogComponent, AgePipe],
+  declarations: [EditPersonDialogComponent, AgePipe, RemainingDaysPipe],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -52,7 +53,8 @@ import { AgePipe } from './pipes/age.pipe';
     MatNativeDateModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    AgePipe
+    AgePipe,
+    RemainingDaysPipe
   ],
   entryComponents: [EditPersonDialogComponent]
 })
