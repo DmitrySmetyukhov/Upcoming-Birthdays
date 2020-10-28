@@ -7,6 +7,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {EditPersonDialogComponent} from './edit-person-dialog/edit-person-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
@@ -18,7 +24,13 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatProgressSpinnerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatSidenavModule,
@@ -26,7 +38,13 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatProgressSpinnerModule,
+    MatNativeDateModule
   ],
   entryComponents: [EditPersonDialogComponent]
 })
