@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {EditPersonDialogComponent} from './shared/edit-person-dialog/edit-person-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'upcomingBirthdays';
+
+  constructor(public dialog: MatDialog) {
+  }
+
+  openDialog() {
+    this.dialog.open(EditPersonDialogComponent);
+  }
 }
