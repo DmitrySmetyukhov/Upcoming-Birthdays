@@ -49,4 +49,16 @@ describe('PersonsListComponent', () => {
     const table = el.queryAll(By.css('.mat-table'));
     expect(table).toBeTruthy();
   });
+
+  it('Should open edit dialog', () => {
+    component.edit({
+      id: '1',
+      firstName: 'test',
+      lastName: 'test',
+      dateOfBirth: new Date().toISOString()
+    });
+    const dialog = el.queryAll(By.css('app-edit-person-dialog'));
+
+    expect(dialog).toBeTruthy();
+  });
 });
