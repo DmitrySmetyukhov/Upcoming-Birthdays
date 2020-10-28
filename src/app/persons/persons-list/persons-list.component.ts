@@ -45,4 +45,8 @@ export class PersonsListComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
+  delete(id: string) {
+    this.personService.deletePerson(id);
+  }
+
 }
