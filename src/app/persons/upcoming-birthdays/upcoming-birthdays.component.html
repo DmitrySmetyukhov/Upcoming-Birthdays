@@ -1,4 +1,5 @@
 <div *ngFor="let person of upComings$ | async">
   <span>First name: {{person.firstName}}</span>
   <span>Date: {{person.dateOfBirth}}</span>
+  <span>Upcoming Age: {{person.dateOfBirth | age}}</span>
 </div>
