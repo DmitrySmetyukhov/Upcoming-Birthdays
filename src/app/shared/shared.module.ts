@@ -15,8 +15,11 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { AgePipe } from './pipes/age.pipe';
-import { RemainingDaysPipe } from './pipes/remaining-days.pipe';
+import {AgePipe} from './pipes/age.pipe';
+import {RemainingDaysPipe} from './pipes/remaining-days.pipe';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { RemainingDaysPipe } from './pipes/remaining-days.pipe';
     MatProgressSpinnerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   exports: [
     MatSidenavModule,
@@ -54,7 +60,10 @@ import { RemainingDaysPipe } from './pipes/remaining-days.pipe';
     ReactiveFormsModule,
     MatSnackBarModule,
     AgePipe,
-    RemainingDaysPipe
+    RemainingDaysPipe,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   entryComponents: [EditPersonDialogComponent]
 })
