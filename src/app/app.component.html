@@ -2,12 +2,18 @@
 
   <mat-sidenav #start class="sidenav">
     <mat-nav-list (click)="start.close()">
-      <a mat-list-item class="sidenav__link">
+      <a mat-list-item class="sidenav__link"
+         routerLink="/persons/upcoming-birthdays" [routerLinkActive]="'active'"
+         [routerLinkActiveOptions]="{ exact: true }"
+      >
         <mat-icon>library_books</mat-icon>
         <span>Upcoming Birthdays</span>
       </a>
 
-      <a mat-list-item class="sidenav__link active">
+      <a mat-list-item class="sidenav__link"
+         routerLink="/persons/list" [routerLinkActive]="'active'"
+         [routerLinkActiveOptions]="{ exact: true }"
+      >
         <mat-icon>list</mat-icon>
         <span>Persons List</span>
       </a>
