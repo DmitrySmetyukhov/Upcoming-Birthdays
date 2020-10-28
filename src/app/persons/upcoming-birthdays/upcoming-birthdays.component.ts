@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PersonDataService} from '../../shared/services/person-data.service';
 
 @Component({
   selector: 'app-upcoming-birthdays',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpcomingBirthdaysComponent implements OnInit {
 
-  constructor() { }
+  constructor(private personService: PersonDataService) { }
 
   ngOnInit(): void {
   }
