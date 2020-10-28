@@ -1,0 +1,14 @@
+.main-layout {
+  &__toolbar {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.sidenav {
+  &__link {
+    &.active {
+      color: #3F51B5;
+    }
+  }
+}
